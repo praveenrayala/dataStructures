@@ -1,6 +1,6 @@
 package com.pra.java.datastruct.queue;
 
-public class BaseQueue<E> implements Queue<E> {
+public class ResizableBaseQueue<E> implements Queue<E> {
 
 	private E queueArray[] ;
 	private int lastIndex= 0; 
@@ -10,13 +10,17 @@ public class BaseQueue<E> implements Queue<E> {
 	public void add(E e) {
 		
 		  if(lastIndex>=queueArray.length) {
-			  System.out.printf("\n Queue is full cannot add \n");
-			  return;
+			  E newqueueArray [] = (E[]) new Object[capacity*2];
+				for (int i = fisrtIndex; i <lastIndex; i++) {
+					newqueueArray[i] = queueArray[i];
+				}
+				queueArray=newqueueArray;
+				 System.out.printf("\nQueue was full and is grown by 2 times \n"); 
 		  }
 		queueArray[lastIndex++]=e;
 	}
 	
-	public BaseQueue(int size) {
+	public ResizableBaseQueue(int size) {
 		 queueArray = (E[]) new Object[size];
 		 capacity=size;
 	}
@@ -72,13 +76,13 @@ public class BaseQueue<E> implements Queue<E> {
 	void printDataStructure() {
 		for (int i = fisrtIndex; i <lastIndex; i++) {
 			if(i==fisrtIndex) {
-				System.out.printf("\\n  \\n Queue start ");
+				System.out.printf(" Queue start ");
 			}
 			
 			System.out.printf(" <==== " + queueArray[i]);
 				
 		}
-		System.out.printf(" <=== Queue ends \\n \\n");
+		System.out.printf(" <=== Queue ends ");
 	}
 //	public abstract E [] reCreate();
 	

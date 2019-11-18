@@ -2,21 +2,19 @@ package com.pra.java.datastruct.queue;
 
 import java.util.Scanner;
 
-public class Driver {
+public class NodeDriver {
 	
 	 public static void main(String[] args)
 	    {
 	        Scanner scan = new Scanner(System.in);
 	 
-	        System.out.println("Array Queue program \n");
-	        System.out.println("Enter Size of Queue ");
-	        int n = scan.nextInt();
+	        System.out.println("Linked list Queue program \n");
 	        /* creating object of class arrayQueue */
-	        ResizableBaseQueue q = new ResizableBaseQueue<String>(n);        
+	        NodeQueue q = new NodeQueue<String>();        
 	        /* Perform Queue Operations */        
 	        char ch;
 	        do{
-	            System.out.println("\nQueue Operations");
+	            System.out.println("\n Queue Operations");
 	            System.out.println("1. enqueue");
 	            System.out.println("2. dequeue");
 	            System.out.println("3. check empty");
@@ -26,20 +24,20 @@ public class Driver {
 	            switch (choice)
 	            {
 	            case 1 : 
-	                System.out.println("\\n Enter name to insert");
+	                System.out.println("\n Enter name to insert");
 	                try
 	                {
 	                    q.add( scan.next() );
 	                }
 	                catch(Exception e)
 	                {
-	                    System.out.println("\\n Error : " +e.getMessage());
+	                    System.out.println("\n Error : " +e.getMessage());
 	                }                         
 	                break;                         
 	            case 2 : 
 	                try
 	                {
-	                    System.out.println("\\n Removed Element = "+q.remove());
+	                    System.out.println("\n Removed Element = "+q.remove());
 	                }
 	                catch(Exception e)
 	                {
@@ -67,7 +65,7 @@ public class Driver {
 	            }
 	            /* display Queue */
 	            q.printDataStructure();            
-	            System.out.println("\nDo you want to continue (Type y or n) \n \\n");
+	            System.out.println("\nDo you want to continue (Type y or n) \n \n");
 	            ch = scan.next().charAt(0);
 	 
 	        } while (ch == 'Y'|| ch == 'y');                                                        
